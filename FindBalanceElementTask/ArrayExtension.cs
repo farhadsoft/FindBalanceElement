@@ -33,18 +33,22 @@ namespace FindBalanceElementTask
             for (int i = 1; i < length; i++)
             {
                 preSum[i] = preSum[i - 1] + array[i];
+                if (array[i] == int.MinValue && preSum[i] == int.MaxValue)
+                {
+                    return null;
+                }
             }
 
-            int[] sufsum = new int[length];
-            sufsum[length - 1] = array[length - 1];
+            int[] sufSum = new int[length];
+            sufSum[length - 1] = array[length - 1];
             for (int i = length - 2; i >= 0; i--)
             {
-                sufsum[i] = sufsum[i + 1] + array[i];
+                sufSum[i] = sufSum[i + 1] + array[i];
             }
 
             for (int i = 1; i < length - 1; i++)
             {
-                if (preSum[i] == sufsum[i])
+                if (preSum[i] == sufSum[i])
                 {
                     return i;
                 }
