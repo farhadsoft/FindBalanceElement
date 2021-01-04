@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace FindBalanceElementTask
 {
@@ -27,24 +28,24 @@ namespace FindBalanceElementTask
                 throw new ArgumentException("Thrown when source array is empty.");
             }
 
-            int lenght = array.Length;
-            int[] preSum = new int[lenght];
+            int length = array.Length;
+            int[] preSum = new int[length];
             preSum[0] = array[0];
-            for (int i = 1; i < lenght; i++)
+            for (int i = 1; i < length; i++)
             {
                 preSum[i] = preSum[i - 1] + array[i];
             }
 
-            int[] sufSum = new int[lenght];
-            sufSum[lenght - 1] = array[lenght - 1];
-            for (int i = lenght - 2; i >= 0; i--)
+            int[] sufsum = new int[length];
+            sufsum[length - 1] = array[length - 1];
+            for (int i = length - 2; i >= 0; i--)
             {
-                sufSum[i] = sufSum[i + 1] + array[i];
+                sufsum[i] = sufsum[i + 1] + array[i];
             }
 
-            for (int i = 1; i < lenght - 1; i++)
+            for (int i = 1; i < length - 1; i++)
             {
-                if (preSum[i] == sufSum[i])
+                if (preSum[i] == sufsum[i])
                 {
                     return i;
                 }
